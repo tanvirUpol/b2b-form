@@ -24,7 +24,8 @@ const Form = () => {
         <label className='mt-3' >
           Phone:
         </label>
-        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border-2'      name="phone" {...register("phone", {required: true })}  type="number"/>
+        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border-2'      name="phone" {...register("phone", {required: true,pattern: /^01[3-9]\d{8}$/
+         })}  type="number"/>
         {errors.phone?.type === 'required' && <p>*phone is required</p>}
         {errors.phone?.type === 'pattern' && <p>*use correct format</p>}
         
@@ -53,7 +54,7 @@ const Form = () => {
           
           <span className='block mb-2 mt-3' >Status:</span>
           <label className='mr-6' >
-            <input name='status' className='mr-2 accent-primaryRed scale-150'  type="radio" value="active" {...register("status", {required: true})} />
+            <input name='status' checked className='mr-2 accent-primaryRed scale-150'  type="radio" value="active" {...register("status", {required: true})} />
             Active
           </label>
           <label>
