@@ -9,11 +9,11 @@ const Form = () => {
   
 
   return (
-  <div className='w-10/12 h-5/6 m-auto bg-white flex flex-col gap-8 items-center justify-center rounded-md'>
+  <div className='m-auto bg-white flex flex-col gap-8 items-center justify-center rounded-md'>
      
-      <h1 className='text-4xl'>Register User</h1>
       <form className='flex flex-col w-[500px] p-10  m-auto my-0' onSubmit={handleSubmit(onSubmit)}>
 
+        <h1 className='text-4xl text-center my-8'>Register User</h1>
         <label className='mt-3' >
           Name:
         </label>
