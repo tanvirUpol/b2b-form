@@ -17,7 +17,7 @@ const Form = () => {
         <label className='mt-3' >
           Name:
         </label>
-        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border-2' 
+        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border' 
         name='name' type="text" {...register("name", 
           { 
             required: true, 
@@ -29,7 +29,7 @@ const Form = () => {
         <label className='mt-3' >
           Phone:
         </label>
-        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border-2'      name="phone" {...register("phone", {required: true,pattern: /^01[3-9]\d{8}$/
+        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primaryRed focus:border'      name="phone" {...register("phone", {required: true,pattern: /^01[3-9]\d{8}$/
          })}  type="number"/>
         {errors.phone?.type === 'required' && <p className='text-sm text-red-600' >*phone is required</p>}
         {errors.phone?.type === 'pattern' && <p className='text-sm text-red-600' >*use correct format</p>}
@@ -37,14 +37,14 @@ const Form = () => {
         <label className='mt-3' >
           Zone:
         </label>
-        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-primaryRed focus:border-primaryRed focus:border-2' type="text" {...register("zone", {required: true})} />
+        <input className='border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-primaryRed focus:border-primaryRed focus:border' type="text" {...register("zone", {required: true})} />
         {errors.zone?.type === 'required' && <p className='text-sm text-red-600' >*zone is required</p>}
         
         <label className='mt-3' >
           Role:
         </label>
         <div className='relative'>
-          <select className='block appearance-none w-full  border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-primaryRed focus:border-2' {...register("role", {required: true})} >
+          <select className='block appearance-none w-full  border  text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-primaryRed focus:border' {...register("role", {required: true})} >
             <option value="sr">sr</option>
             <option value="dm">dm</option>
           </select>
