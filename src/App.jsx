@@ -3,6 +3,7 @@ import Form from "./components/Form";
 import Table from './components/Table';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
+import ForgotPassword from './components/ForgotPassword';
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
               <Route
                 path='/table'
                 element={ <Table data={data} headers={headers} keys={keys} /> }
+              />
+              <Route
+                path='/forgotPassword'
+                element={ <ForgotPassword/> }
               />
             </Routes>
           </div>
