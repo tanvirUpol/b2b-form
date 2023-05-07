@@ -52,6 +52,11 @@ const JsonConverter = () => {
                         const updateData = json.map((data) => {
                             return { ...data, isPopuler: false };
                         });
+
+                        const filteredJson = updateData.filter(data=>{
+                            // console.log(data);
+                            return data.division == "GROCERY";
+                        })
                         //console.log('updateData: ', updateData);
                         // const filteredJson = updateData.filter(data => data.Name);
                         // // filter only name and image fields
@@ -60,7 +65,7 @@ const JsonConverter = () => {
                         //     const { Name, isPopuler } = filteredJson[i];
                         //     finalJson.push({ Name, isPopuler });
                         // }
-                        setJsonFile(updateData);
+                        setJsonFile(filteredJson);
                         
                     });
                 };
@@ -80,14 +85,18 @@ const JsonConverter = () => {
                     return { ...data, isPopuler: false };
                 });
                 // console.log('updateData: ', updateData);
-                // const filteredJson = updateData.filter(data => data.Name);
+                const filteredJson = updateData.filter(data=>{
+                    // console.log(data);
+                    return data.division == "GROCERY";
+                })
+                
 
                 // const finalJson = [];
                 // for (let i = 0; i < filteredJson.length; i++) {
                 //     const { Name, isPopuler } = filteredJson[i];
                 //     finalJson.push({ Name, isPopuler });
                 // }
-                setJsonFile(updateData);
+                setJsonFile(filteredJson);
               
                 }
                 
@@ -116,7 +125,7 @@ const JsonConverter = () => {
 
   return (
     <div className="bg-white p-9 shadow text-center" >
-            <h1 className="text-lg mb-8" >Drag & Drop Files</h1>
+            <h1 className="text-lg mb-8 font-bold" >Drag & Drop Files</h1>
 
             <form onSubmit={handleSubmit} >
                 {files ?
