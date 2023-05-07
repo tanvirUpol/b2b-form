@@ -4,6 +4,7 @@ import Table from './components/Table';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
 import ForgotPassword from './components/ForgotPassword';
+import JsonConverter from './components/JsonConvert';
 
 
 function App() {
@@ -33,6 +34,10 @@ function App() {
               <Route
                 path='/forgotPassword'
                 element={ <ForgotPassword/> }
+              />
+              <Route
+                path='/json'
+                element={ <JsonConverter/> }
               />
             </Routes>
           </div>
