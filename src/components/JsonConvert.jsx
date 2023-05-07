@@ -52,14 +52,15 @@ const JsonConverter = () => {
                         const updateData = json.map((data) => {
                             return { ...data, isPopuler: false };
                         });
-                        const filteredJson = updateData.filter(data => data.Name);
-                        // filter only name and image fields
-                        const finalJson = [];
-                        for (let i = 0; i < filteredJson.length; i++) {
-                            const { Name, isPopuler } = filteredJson[i];
-                            finalJson.push({ Name, isPopuler });
-                        }
-                        setJsonFile(finalJson);
+                        //console.log('updateData: ', updateData);
+                        // const filteredJson = updateData.filter(data => data.Name);
+                        // // filter only name and image fields
+                        // const finalJson = [];
+                        // for (let i = 0; i < filteredJson.length; i++) {
+                        //     const { Name, isPopuler } = filteredJson[i];
+                        //     finalJson.push({ Name, isPopuler });
+                        // }
+                        setJsonFile(updateData);
                         
                     });
                 };
@@ -78,14 +79,15 @@ const JsonConverter = () => {
                 const updateData = json.map((data) => {
                     return { ...data, isPopuler: false };
                 });
-                const filteredJson = updateData.filter(data => data.Name);
+                // console.log('updateData: ', updateData);
+                // const filteredJson = updateData.filter(data => data.Name);
 
-                const finalJson = [];
-                for (let i = 0; i < filteredJson.length; i++) {
-                    const { Name, isPopuler } = filteredJson[i];
-                    finalJson.push({ Name, isPopuler });
-                }
-                setJsonFile(finalJson);
+                // const finalJson = [];
+                // for (let i = 0; i < filteredJson.length; i++) {
+                //     const { Name, isPopuler } = filteredJson[i];
+                //     finalJson.push({ Name, isPopuler });
+                // }
+                setJsonFile(updateData);
               
                 }
                 
