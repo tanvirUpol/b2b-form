@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { useState } from "react";
 import * as XLSX from 'xlsx/xlsx.mjs';
 import csvtojson from 'csvtojson';
@@ -6,6 +7,8 @@ const JsonConverter = () => {
     
         const [files, setFiles] = useState(null);
         const [jsonFile, setJsonFile] = useState(null);
+        const [jsonFile2, setJsonFile2] = useState(null);
+        const [jsonFile3, setJsonFile3] = useState(null);
         const [error, setError] = useState(null);
         const [highlight, setHighlight] = useState(false);
 
@@ -48,24 +51,38 @@ const JsonConverter = () => {
                 csvtojson()
                     .fromString(fileReader.result)
                     .then((json) => {
-                        
-                        const updateData = json.map((data) => {
-                            return { ...data, isPopuler: false };
-                        });
 
-                        const filteredJson = updateData.filter(data=>{
-                            // console.log(data);
-                            return data.division == "GROCERY";
-                        })
-                        //console.log('updateData: ', updateData);
-                        // const filteredJson = updateData.filter(data => data.Name);
-                        // // filter only name and image fields
-                        // const finalJson = [];
-                        // for (let i = 0; i < filteredJson.length; i++) {
-                        //     const { Name, isPopuler } = filteredJson[i];
-                        //     finalJson.push({ Name, isPopuler });
-                        // }
-                        setJsonFile(filteredJson);
+                        console.log(json[0]);
+
+                        // eslint-disable-next-line no-prototype-builtins
+                        if(json[0].hasOwnProperty('division')) {
+                        
+                            const updateData = json.map((data) => {
+                                return { ...data, isPopuler: false };
+                            });
+        
+                            const filteredJson = updateData.filter(data=>{
+                                // console.log(data);
+                                return data.division == "GROCERY";
+                            })
+                            //console.log('updateData: ', updateData);
+                            // const filteredJson = updateData.filter(data => data.Name);
+                            // // filter only name and image fields
+                            // const finalJson = [];
+                            // for (let i = 0; i < filteredJson.length; i++) {
+                            //     const { Name, isPopuler } = filteredJson[i];
+                            //     finalJson.push({ Name, isPopuler });
+                            // }
+                            setJsonFile(filteredJson);
+                            }
+                            else if(json[0].hasOwnProperty('MRP')){
+                                setJsonFile2(json);
+                            }else if(json[0].hasOwnProperty('Stock')){
+                                setJsonFile3(json);
+                            }else{
+                                console.error("egula ki vai")
+                            }
+                        // console.log(jsonFile);
                         
                     });
                 };
@@ -81,14 +98,34 @@ const JsonConverter = () => {
                 const sheetName = workbook.SheetNames[0];
                 const sheet = workbook.Sheets[sheetName];
                 json = XLSX.utils.sheet_to_json(sheet);
-                const updateData = json.map((data) => {
-                    return { ...data, isPopuler: false };
-                });
-                // console.log('updateData: ', updateData);
-                const filteredJson = updateData.filter(data=>{
-                    // console.log(data);
-                    return data.division == "GROCERY";
-                })
+                // eslint-disable-next-line no-prototype-builtins
+                if(json[0].hasOwnProperty('division')) {
+                        
+                    const updateData = json.map((data) => {
+                        return { ...data, isPopuler: false };
+                    });
+
+                    const filteredJson = updateData.filter(data=>{
+                        // console.log(data);
+                        return data.division == "GROCERY";
+                    })
+                    //console.log('updateData: ', updateData);
+                    // const filteredJson = updateData.filter(data => data.Name);
+                    // // filter only name and image fields
+                    // const finalJson = [];
+                    // for (let i = 0; i < filteredJson.length; i++) {
+                    //     const { Name, isPopuler } = filteredJson[i];
+                    //     finalJson.push({ Name, isPopuler });
+                    // }
+                    setJsonFile(filteredJson);
+                    }
+                    else if(json[0].hasOwnProperty('MRP')){
+                        setJsonFile2(json);
+                    }else if(json[0].hasOwnProperty('Stock')){
+                        setJsonFile3(json);
+                    }else{
+                        console.error("egula ki vai")
+                    }
                 
 
                 // const finalJson = [];
@@ -96,7 +133,7 @@ const JsonConverter = () => {
                 //     const { Name, isPopuler } = filteredJson[i];
                 //     finalJson.push({ Name, isPopuler });
                 // }
-                setJsonFile(filteredJson);
+              
               
                 }
                 
@@ -118,7 +155,30 @@ const JsonConverter = () => {
         const handleSubmit = (event) =>{
             event.preventDefault();
 
-            console.log("Uploaded JSON",jsonFile);
+            console.log("Uploaded JSON1",jsonFile);
+            console.log("Uploaded JSON2",jsonFile2);
+            console.log("Uploaded JSON3",jsonFile3);
+
+            const newArray = [];
+
+            jsonFile.forEach((item) => {
+            //   const mrp = jsonFile2[index].MRP;
+            //   const stock = jsonFile3[index].Stock;
+              const mrp = jsonFile2.find((mrpItem) => mrpItem.ProductCode === item.code);
+            //   const stock = jsonFile3[index].Stock;
+            
+            if(mrp){
+                newArray.push({
+                    code: item.code,
+                    isPopuler: item.isPopuler,
+                    mrp: mrp.MRP,
+                  });
+            }
+              
+            });
+            console.log("loading...");
+            console.log("new Array",newArray);
+            console.log("Finished loading");
       
         }
 
@@ -133,7 +193,7 @@ const JsonConverter = () => {
                     ">
                         <h4>{files[0].name}</h4> 
                         <button className="bg-primaryRed text-white p-2 rounded" onClick={removeFile}>Remove</button>
-                    </div>  :
+                    </div>  : ""}
                     <label  id="drop-area"
                         className={`flex  bg-slate-100 rounded justify-center items-center file-input-with-drag-and-drop w-96 h-64 text-primaryRed ${highlight ? 'highlight' : ''}`}
                         onDragEnter={handleDragEnter}
@@ -150,9 +210,9 @@ const JsonConverter = () => {
                             hidden
                         />
                     </label>
-                }
+                
                 { error && <h3>Wrong file format!!</h3> }
-                { jsonFile &&  <input type="submit" className="submit-btn bg-green-700 text-white p-2 rounded mt-5 cursor-pointer"  value="Submit" /> }
+                { jsonFile && jsonFile2  &&  <input type="submit" className="submit-btn bg-green-700 text-white p-2 rounded mt-5 cursor-pointer"  value="Submit" /> }
             </form>
 
     </div>

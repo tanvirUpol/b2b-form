@@ -12,8 +12,9 @@ const Navbar = () => {
                   
                     <Link to="/">Form</Link>
                     <Link className='ml-5' to="/table">Table</Link>
-                    <Link className='ml-5' to="/json">JSON</Link>
+                    {/* <Link className='ml-5' to="/json">JSON</Link> */}
                     <Link className='ml-5' to="/forgotPassword">Frogot</Link>
+                    <Link className='ml-5' to="/jsonMaker">NewJson</Link>
                   
             </nav>
         </div>

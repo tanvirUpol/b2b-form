@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import { useState } from 'react';
 import ForgotPassword from './components/ForgotPassword';
 import JsonConverter from './components/JsonConvert';
+import JsonMaker from './components/JsonMaker';
+
 
 
 function App() {
@@ -38,6 +40,10 @@ function App() {
               <Route
                 path='/json'
                 element={ <JsonConverter/> }
+              />
+              <Route
+                path='/jsonMaker'
+                element={ <JsonMaker/> }
               />
             </Routes>
           </div>
