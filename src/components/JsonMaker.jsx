@@ -220,7 +220,7 @@ const JsonMaker = () => {
 
 
 return (
-<div className="bg-white p-9 shadow text-center" >
+<div className="bg-white p-9 shadow text-center mt-5" >
         <h1 className="text-lg mb-8 font-bold" >Upload Files</h1>
 
         <form onSubmit={handleSubmit} >

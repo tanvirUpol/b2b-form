@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     const password = React.useRef({});
     password.current = watch("password", "");
   return (
-    <div>
+    <div className='mt-5' >
         <section className="bg-gray-50">
             
       

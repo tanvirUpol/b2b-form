@@ -24,7 +24,7 @@ function App() {
   return (
       <BrowserRouter>
           <Navbar/>
-          <div className="h-screen bg-[#FFF5F9] flex justify-center items-center">
+          <div className="h-screen bg-[#FFF5F9] flex justify-center items-start mt">
             <Routes>
               <Route
                 path='/'

@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     
     <header>
-        <div className="flex justify-between items-center p-6">
+        <div className="flex justify-around items-center p-6">
             <Link to="/" >
                 <h1>Components101</h1>
             </Link>
