@@ -64,7 +64,7 @@ const JsonMaker = () => {
                         }, {})
                       );
                     
-                      console.log(result);
+                    //   console.log(result);
                     
                     // eslint-disable-next-line no-prototype-builtins
                     if(result[0].hasOwnProperty('Description')) {
@@ -85,8 +85,8 @@ const JsonMaker = () => {
                             return { ...data, isPopuler: false };
                         });
         
-                        console.log("Done");
-                        console.log(updateData);
+                        // console.log("Done");
+                        // console.log(updateData);
         
         
                         setJsonFile(updateData);
@@ -127,7 +127,7 @@ const JsonMaker = () => {
                 }, {})
               );
             
-              console.log(result);
+            //   console.log(result);
             
             // eslint-disable-next-line no-prototype-builtins
             if(result[0].hasOwnProperty('Description')) {
@@ -146,8 +146,8 @@ const JsonMaker = () => {
                     return { ...data, isPopuler: false };
                 });
 
-                console.log("Done");
-                console.log(updateData);
+                // console.log("Done");
+                // console.log(updateData);
 
 
                 setJsonFile(updateData);
@@ -214,7 +214,7 @@ const JsonMaker = () => {
           
         });
         console.log("loading...");
-        console.log("new Array",newArray);
+        console.log("Final Json", newArray);
         
     }
 
