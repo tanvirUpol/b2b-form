@@ -6,6 +6,7 @@ import { useState } from 'react';
 import ForgotPassword from './components/ForgotPassword';
 import JsonConverter from './components/JsonConvert';
 import JsonMaker from './components/JsonMaker';
+import ImageUpload from './components/ImageUpload';
 
 
 
@@ -44,6 +45,10 @@ function App() {
               <Route
                 path='/jsonMaker'
                 element={ <JsonMaker/> }
+              />
+              <Route
+                path='/imageUpload'
+                element={ <ImageUpload/> }
               />
             </Routes>
           </div>

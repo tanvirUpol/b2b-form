@@ -15,6 +15,7 @@ const Navbar = () => {
                     {/* <Link className='ml-5' to="/json">JSON</Link> */}
                     <Link className='ml-5' to="/forgotPassword">Frogot</Link>
                     <Link className='ml-5' to="/jsonMaker">NewJson</Link>
+                    <Link className='ml-5' to="/imageUpload">ImageUpload</Link>
                   
             </nav>
         </div>
