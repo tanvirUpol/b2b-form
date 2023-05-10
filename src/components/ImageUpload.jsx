@@ -1,12 +1,10 @@
 import { useState,useEffect } from "react";
 
 const ImageUpload = () => {
-    // get orginal json from db here for now its empty
-    const [dbJson, setDbJson] = useState([])
     const [sliderImages, setSliderImages] = useState([]);
     const [bannerImage, setBannerImage] = useState([]);
 
-    const data  ={
+    const data  =   {
         bannerImage: "https://i.ibb.co/rtmKD8G/bottom-banner.png",
         sliderImages:  [  
             {id: 1, image: 'https://i.ibb.co/9vCg896/Middle-Slider-1.png'},
@@ -14,6 +12,16 @@ const ImageUpload = () => {
             {id: 3, image: 'https://i.ibb.co/b3LPTKj/Middle-Slider.png'}
          ]
      }   
+
+     console.log(data.bannerImage);
+
+     useEffect(() => {
+        setSliderImages(data.sliderImages.map(image => image.image));
+        setBannerImage([data.bannerImage]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
+
+      console.log(bannerImage);
   
     const handleFileChange = async (event,num) => {
        console.log(num);
