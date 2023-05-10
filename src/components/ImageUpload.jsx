@@ -13,7 +13,7 @@ const ImageUpload = () => {
          ]
      }   
 
-     console.log(data.bannerImage);
+    //  console.log(data.bannerImage);
 
      useEffect(() => {
         setSliderImages(data.sliderImages.map(image => image.image));
@@ -21,10 +21,10 @@ const ImageUpload = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
-      console.log(bannerImage);
+    //   console.log(bannerImage);
   
     const handleFileChange = async (event,num) => {
-       console.log(num);
+    //    console.log(num);
         const image = event.target.files[0]
 
         // event.preventDefault();
@@ -39,7 +39,7 @@ const ImageUpload = () => {
             });
     
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             
 
             // Add the image URL to the array of images
@@ -116,10 +116,11 @@ const ImageUpload = () => {
             { sliderImages &&
            <div className="images flex flex-col  justify-center items-center gap-4">
                 {sliderImages.map((imageUrl, index) => (
+                    (imageUrl.length>0 &&
                     <div className="relative" key={index}>
                         <img className="w-[328px] h-[111px]" src={imageUrl} alt="Uploaded" />
                         <button className="absolute top-8 right-4 z-10 text-white" type="button" onClick={() => { handleDelete(index); }}>X</button>
-                    </div>
+                    </div>)
                 ))}
            </div>}
 
@@ -146,11 +147,12 @@ const ImageUpload = () => {
             { bannerImage &&
            <div className="images flex flex-col  justify-center items-center gap-4">
                 {bannerImage.map((imageUrl, index) => (
-                    <div className="relative" key={index}>
-                        
-                        <img className="w-[328px] h-[120px]" src={imageUrl} alt="Uploaded" />
-                        <button className="absolute top-2 right-5 z-10 text-white" type="button" onClick={() => { handleBannerDelete(index); }}>X</button>
-                    </div>
+                        (imageUrl.length>0 &&
+                            <div className="relative" key={index}>
+                                <img className="w-[328px] h-[120px]" src={imageUrl} alt="Uploaded" />
+                                <button className="absolute top-2 right-5 z-10 text-white" type="button" onClick={() => { handleBannerDelete(index); }}>X</button>
+                            </div>
+                        )
                 ))}
            </div>}
         </div>
